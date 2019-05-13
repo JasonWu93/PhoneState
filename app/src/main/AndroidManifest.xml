@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jason.phonestate">
+    <!--读取电话的状态信息的权限-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--处理拨出电话，允许程序监视,修改或放弃播出电话-->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:allowBackup="true"
@@ -16,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".PhoneStateService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
