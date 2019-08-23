@@ -9,6 +9,8 @@ import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
@@ -97,15 +99,14 @@ public class PhoneStateService extends Service {
     }
 
     public void Touher() {
-//        ImageView imageView = new ImageView(getApplicationContext());
-//        imageView.setImageResource(R.drawable.ic_launcher_background);
-        TextView textView =new TextView(getApplicationContext());
+        View view = (View) LayoutInflater.from(getApplicationContext()).inflate(R.layout.floatwindow, null);
+        TextView textView = view.findViewById(R.id.ftextview);
         textView.setText("运营商");
         textView.setBackgroundResource(R.drawable.ic_launcher_background);
 
         FloatWindow
                 .with(getApplicationContext())
-                .setView(textView)
+                .setView(view)
                 .setWidth(Screen.width, 0.2f) //设置悬浮控件宽高
                 .setHeight(Screen.width, 0.1f)
                 .setX(Screen.width, 0.8f)
